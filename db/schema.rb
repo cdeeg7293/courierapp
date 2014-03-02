@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140122144010) do
+ActiveRecord::Schema.define(version: 20140302142915) do
 
   create_table "addresses", force: true do |t|
     t.string   "city"
@@ -60,5 +60,19 @@ ActiveRecord::Schema.define(version: 20140122144010) do
 
   add_index "couriers", ["address_id"], name: "index_couriers_on_address_id"
   add_index "couriers", ["client_id"], name: "index_couriers_on_client_id"
+
+  create_table "orders", force: true do |t|
+    t.integer  "number"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.decimal  "sum"
+    t.datetime "delivered_date"
+    t.datetime "issued_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["receiver_id"], name: "index_orders_on_receiver_id"
+  add_index "orders", ["sender_id"], name: "index_orders_on_sender_id"
 
 end

@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :number %><br>
-    <%= f.number_field :number %>
-  </div>
-  <div class="field">
     <%= f.label :sender %><br>
     <%= f.text_field :sender %>
   </div>
@@ -26,14 +22,6 @@
   <div class="field">
     <%= f.label :sum %><br>
     <%= f.text_field :sum %>
-  </div>
-  <div class="field">
-    <%= f.label :delivered_date %><br>
-    <%= f.datetime_select :delivered_date %>
-  </div>
-  <div class="field">
-    <%= f.label :issued_date %><br>
-    <%= f.datetime_select :issued_date %>
   </div>
   <div class="actions">
     <%= f.submit %>
