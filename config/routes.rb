@@ -1,4 +1,6 @@
 Clientcontacttest::Application.routes.draw do
+  resources :orders
+
   resources :couriers
 
   resources :contact_types
