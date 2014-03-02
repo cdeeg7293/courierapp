@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @courier.client %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @courier.address %>
+</p>
+
+<%= link_to 'Edit', edit_courier_path(@courier) %> |
+<%= link_to 'Back', couriers_path %>

@@ -1,0 +1,38 @@
+
+
+  <div class="field">
+    <%= f.label :is_person %><br>
+    <%= f.check_box :is_person %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patronymic %><br>
+    <%= f.text_field :patronymic %>
+  </div>
+
+<h3> Address </h3>
+<div id="address">
+  <%= f.fields_for :address do |addr| %>
+    <% render "shared/address_fields", :f => addr %>
+  <% end %>
+</div>
+
+<h3> Contacts </h3>
+  <div id="contacts">
+    <%= f.fields_for :contacts do |contact| %>
+      <%= render 'shared/contact_fields', :f => contact %>
+<% end %>
+    <div class="links"> 
+      <%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' %>
+    </div>
+    

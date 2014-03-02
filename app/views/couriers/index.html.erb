@@ -1,0 +1,29 @@
+<h1>Listing couriers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Address</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @couriers.each do |courier| %>
+      <tr>
+        <td><%= courier.client %></td>
+        <td><%= courier.address %></td>
+        <td><%= link_to 'Show', courier %></td>
+        <td><%= link_to 'Edit', edit_courier_path(courier) %></td>
+        <td><%= link_to 'Destroy', courier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Courier', new_courier_path %>
