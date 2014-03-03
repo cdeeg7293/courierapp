@@ -44,4 +44,8 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#cocoon for nested forms
 gem 'cocoon'
+
+#will_paginated for pagination
+gem 'will_paginate', '~> 3.0'

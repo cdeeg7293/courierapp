@@ -1,3 +1,6 @@
+
+<%= link_to 'New Client', new_client_path %>
+
 <h1>Listing clients</h1>
 
 <table>
@@ -22,6 +25,5 @@
   </tbody>
 </table>
 
-<br>
+<%= will_paginate @clients %>
 
-<%= link_to 'New Client', new_client_path %>
