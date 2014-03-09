@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :load_sender_and_receiver, only: [:new, :edit]
 
   # GET /orders
   # GET /orders.json
@@ -60,6 +61,12 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def select_sender_or_receiver
+    set_session_value(:return_url, URI(request.referer).path) #need to make this more modern!
+    set_session_value(:srflag, params[:srflag])
+    redirect_to clients_url
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +76,18 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:number, :sender_id, :receiver_id, :sum, :delivered_date, :issued_date)
+      params.require(:order).permit(:sender_id, :receiver_id, :sum, :delivered_date)
+    end
+    
+    def load_sender_and_receiver
+      sender_id = get_session_value(:sender)
+      if sender_id 
+	@sender = Client.find(sender_id)
+      end
+      
+      receiver_id = get_session_value(:receiver)
+      if receiver_id 
+	@receiver = Client.find(receiver_id)
+      end
     end
 end

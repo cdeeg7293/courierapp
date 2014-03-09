@@ -19,8 +19,8 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.number %></td>
-        <td><%= order.sender %></td>
-        <td><%= order.receiver %></td>
+        <td><%= order.sender.full_name %></td>
+        <td><%= order.receiver.full_name %></td>
         <td><%= order.sum %></td>
         <td><%= order.delivered_date %></td>
         <td><%= order.issued_date %></td>

@@ -10,14 +10,32 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= f.label :sender %><br>
-    <%= f.text_field :sender %>
+    <% if @sender.nil? %>
+      <% if !@order.sender.nil?%>
+        <%= @order.sender.full_name %>
+        <%= f.hidden_field :sender_id, :value => @order.sender.id %>
+      <% end %>
+    <% else %>
+      <%= @sender.full_name %>
+      <%= f.hidden_field :sender_id, :value => @sender.id %>
+    <% end %>
+    <%= link_to "Select sender", select_srr_orders_path(:srflag => :sender) %>
   </div>
   <div class="field">
     <%= f.label :receiver %><br>
-    <%= f.text_field :receiver %>
+    <% if @receiver.nil? %>
+      <% if !@order.receiver.nil?%>
+        <%= @order.receiver.full_name %>
+        <%= f.hidden_field(:receiver_id, :value => @order.receiver.id) %>
+      <% end %>
+    <% else %>
+        <%= @receiver.full_name %>
+        <%= f.hidden_field :receiver_id, :value => @receiver.id %>
+    <% end %>
+    <%= link_to "Select receiver", select_srr_orders_path(:srflag => :receiver) %>
   </div>
   <div class="field">
     <%= f.label :sum %><br>

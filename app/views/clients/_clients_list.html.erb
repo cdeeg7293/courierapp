@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <% if return_url %>
+      <th>Select</th>
+      <% end %>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% clients.each do |client| %>
+      <tr>
+        <% if return_url %>
+        <td>
+          <%= link_to 'Select', select_client_path(client.id), :method=> :post %>
+        </td>
+        <% end %>
+        <td><%= client.full_name %></td>
+        <td><%= link_to 'Show', client %></td>
+        <td><%= link_to 'Edit', edit_client_path(client) %></td>
+        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

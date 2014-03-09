@@ -1,11 +1,19 @@
 Clientcontacttest::Application.routes.draw do
-  resources :orders
+  resources :orders do
+    collection do
+      get 'select_sender_or_receiver', as: :select_srr
+    end
+  end
 
   resources :couriers
-
+  
   resources :contact_types
 
-  resources :clients
+  resources :clients do
+    member do
+      post 'select'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

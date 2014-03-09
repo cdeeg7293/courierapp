@@ -5,8 +5,29 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    #per page value is made 2 only for test 
-    @clients = Client.paginate(:page => params[:page], :per_page => 2)
+    @clients = Client.paginate(:page => params[:page], :per_page => 5)
+    
+    @return_url = get_session_value(:return_url) || nil
+  end
+  
+  #POST /clients/select_client
+  def select
+    redirect_url = get_session_value(:return_url).to_s
+    #sr = get_session_value(:sr)
+    client_id = params[:id]
+    if Client.exists?(client_id)
+      if get_session_value(:srflag).to_sym == :sender
+        set_session_value(:sender, client_id)
+      else
+	set_session_value(:receiver, client_id)
+      end
+      set_session_value(:return_url, nil)
+      redirect_to redirect_url
+      return
+    else
+      flash[:error] = "Wrong client chosen"
+      redirect_to index
+    end
   end
 
   # GET /clients/1
@@ -78,4 +99,5 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:last_name, :first_name, :patronymic, :is_person, address_attributes: [:id, :city, :street, :building, :apartment], contacts_attributes: [:id, :contact_type_id, :value, :_destroy])
     end
+    
 end
