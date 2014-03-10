@@ -22,7 +22,11 @@
         <td><%= order.sender.full_name %></td>
         <td><%= order.receiver.full_name %></td>
         <td><%= order.sum %></td>
-        <td><%= order.delivered_date %></td>
+        <% if order.is_delivered? %>
+	  <td><%= order.delivered_date %></td>
+        <% else %>
+	  <td> Not delivered </td>
+        <% end%>
         <td><%= order.issued_date %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
