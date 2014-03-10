@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Clientcontacttest</title>
+  <title>CourierApp</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag    "bootstrap.css", media: "all" %>
+  <%= stylesheet_link_tag    "bootstrap-responsive.css", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render "navbar" %>
+
 
 <%= yield %>
 
