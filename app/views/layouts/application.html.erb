@@ -12,9 +12,18 @@
 </head>
 <body>
   <%= render "navbar" %>
+  <div class="container-fluid">
+    <div class="row-fluid"> 
 
-
-<%= yield %>
-
+    <%= yield %>
+    
+    </div>
+    <hr>
+      <footer>
+        <p>&copy; CourierApp <%= Time.now.year %> </p>
+      </footer>
+    </div>
+  </div>
+  <!--/.fluid-container-->
 </body>
 </html>
