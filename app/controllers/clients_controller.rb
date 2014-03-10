@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.paginate(:page => params[:page], :per_page => 5)
+    @clients = Client.includes(:address).paginate(:page => params[:page], :per_page => 5)
     
     @return_url = get_session_value(:return_url) || nil
   end

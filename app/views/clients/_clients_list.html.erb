@@ -5,9 +5,8 @@
       <th>Select</th>
       <% end %>
       <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Address</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -20,9 +19,16 @@
         </td>
         <% end %>
         <td><%= client.full_name %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= client.address.full_address %></td>
+        <td>
+          <%= link_to client, class: 'btn' do %>
+            <i class="icon-eye-open"></i> Show
+          <% end %>
+          <%= link_to edit_client_path(client), class: 'btn btn-primary' do %>
+            <i class="icon-pencil icon-white"></i> Edit
+          <% end %>
+          <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
