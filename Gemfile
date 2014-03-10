@@ -49,3 +49,6 @@ gem 'cocoon'
 
 #will_paginated for pagination
 gem 'will_paginate', '~> 3.0'
+
+#bootstrap for rails
+gem 'twitter-bootstrap-rails'
