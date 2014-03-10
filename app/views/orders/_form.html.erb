@@ -1,31 +1,19 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :sender %><br>
+<%= form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :sender, :class => 'control-label' %><br>
     <% if @sender.nil? %>
       <% if !@order.sender.nil?%>
-        <%= @order.sender.full_name %>
+        <span> <%= @order.sender.full_name %> </span>
         <%= f.hidden_field :sender_id, :value => @order.sender.id %>
       <% end %>
     <% else %>
-      <%= @sender.full_name %>
+      <span> <%= @sender.full_name %> </span>
       <%= f.hidden_field :sender_id, :value => @sender.id %>
     <% end %>
-    <%= link_to "Select sender", select_srr_orders_path(:srflag => :sender) %>
+    <%= link_to "Select sender", select_srr_orders_path(:srflag => :sender), class: 'btn' %>
   </div>
-  <div class="field">
-    <%= f.label :receiver %><br>
+  <div class="control-group">
+    <%= f.label :receiver, :class => 'control-label' %><br>
     <% if @receiver.nil? %>
       <% if !@order.receiver.nil?%>
         <%= @order.receiver.full_name %>
@@ -35,13 +23,18 @@
         <%= @receiver.full_name %>
         <%= f.hidden_field :receiver_id, :value => @receiver.id %>
     <% end %>
-    <%= link_to "Select receiver", select_srr_orders_path(:srflag => :receiver) %>
+    <%= link_to "Select receiver", select_srr_orders_path(:srflag => :receiver), class: 'btn' %>
   </div>
-  <div class="field">
-    <%= f.label :sum %><br>
-    <%= f.text_field :sum %>
+  <div class="control-group">
+    <%= f.label :sum, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :sum, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                orders_path, :class => 'btn' %>
   </div>
 <% end %>

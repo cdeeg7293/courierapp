@@ -1,33 +1,20 @@
-<%= form_for(@courier) do |f| %>
-  <% if @courier.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@courier.errors.count, "error") %> prohibited this courier from being saved:</h2>
-
-      <ul>
-      <% @courier.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @courier, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :client_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :client_id, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :address_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address_id, :class => 'text_field' %>
+    </div>
+  </div>
 
-
-<h3> Personal info</h3>
-<div id="pers">
-  <%= f.fields_for :client do |cl| %>
-    <% render "/shared/client_fields", f: cl %>
-  <% end %>
-</div>
-
-<h3> Address </h3>
-<div id="address">
-  <%= f.fields_for :address do |addr| %>
-    <% render "/shared/address_fields", :f => addr %>
-  <% end %>
-</div>
-
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                couriers_path, :class => 'btn' %>
   </div>
 <% end %>

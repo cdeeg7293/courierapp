@@ -1,29 +1,38 @@
-<h1>Listing couriers</h1>
-
-<table>
+<%- model_class = Courier -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Client</th>
-      <th>Address</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:client_id) %></th>
+      <th><%= model_class.human_attribute_name(:address_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @couriers.each do |courier| %>
       <tr>
-        <td><%= courier.client %></td>
-        <td><%= courier.address %></td>
-        <td><%= link_to 'Show', courier %></td>
-        <td><%= link_to 'Edit', edit_courier_path(courier) %></td>
-        <td><%= link_to 'Destroy', courier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to courier.id, courier_path(courier) %></td>
+        <td><%= courier.client_id %></td>
+        <td><%= courier.address_id %></td>
+        <td><%=l courier.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_courier_path(courier), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      courier_path(courier),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Courier', new_courier_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_courier_path,
+            :class => 'btn btn-primary' %>
