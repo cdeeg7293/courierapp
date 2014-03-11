@@ -14,7 +14,7 @@
             <%= render partial: "clients/clients_list", locals: { clients: @clients, return_url: @return_url } %>
           </div>
         </div>
-        <%= will_paginate @clients %>
+        <%= will_paginate @clients, renderer: BootstrapPagination::Rails %>
       </div>
       <!-- /block -->
     </div>

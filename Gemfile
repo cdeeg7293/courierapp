@@ -52,3 +52,6 @@ gem 'will_paginate', '~> 3.0'
 
 #bootstrap for rails
 gem 'twitter-bootstrap-rails'
+
+#will_paginate bootstrap style
+gem 'will_paginate-bootstrap', '0.2.5'
