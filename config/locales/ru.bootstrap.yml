@@ -8,6 +8,7 @@ ru:
       destroy: "Удалить"
       new: "Новый"
       edit: "Изменить"
+      show: "Детали"
     titles:
       edit: "Изменить %{model}"
       save: "Сохранить %{model}"
