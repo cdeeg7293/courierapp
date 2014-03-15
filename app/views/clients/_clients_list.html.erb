@@ -1,19 +1,22 @@
+<%- model_class = Client 
+    clients = model
+-%>
 <table class = "table table-bordered">
   <thead>
     <tr>
-      <% if return_url %>
+      <% if !return_url.nil? %>
       <th>Select</th>
       <% end %>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Actions</th>
+      <th><%= model_class.human_attribute_name(:full_name) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
 
   <tbody>
     <% clients.each do |client| %>
       <tr>
-        <% if return_url %>
+        <% if !return_url.nil? %>
         <td>
           <%= link_to 'Select', select_client_path(client.id), :method=> :post %>
         </td>
@@ -21,15 +24,7 @@
         <td><%= client.full_name %></td>
         <td><%= client.address.full_address %></td>
         <td>
-          <%= link_to client, class: 'btn' do %>
-            <i class="icon-eye-open"></i> Show
-          <% end %>
-          <%= link_to edit_client_path(client), class: 'btn btn-primary' do %>
-            <i class="icon-pencil icon-white"></i> Edit
-          <% end %>
-          <%= link_to client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
-            <i class="icon-remove icon-white"></i> Destroy
-          <% end %>
+          <%= render "table_actions", model: client %>
         </td>
       </tr>
     <% end %>

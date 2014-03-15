@@ -5,28 +5,24 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:number) %></th>
       <th><%= model_class.human_attribute_name(:sender_id) %></th>
       <th><%= model_class.human_attribute_name(:receiver_id) %></th>
       <th><%= model_class.human_attribute_name(:sum) %></th>
       <th><%= model_class.human_attribute_name(:delivered_date) %></th>
       <th><%= model_class.human_attribute_name(:issued_date) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.id, order_path(order) %></td>
         <td><%= order.number %></td>
-        <td><%= order.sender_id %></td>
-        <td><%= order.receiver_id %></td>
+        <td><%= order.sender.full_name %></td>
+        <td><%= order.receiver.full_name %></td>
         <td><%= order.sum %></td>
         <td><%= order.delivered_date %></td>
         <td><%= order.issued_date %></td>
-        <td><%=l order.created_at %></td>
         <td>
           <%= render "table_actions", model: order %>
         </td>
