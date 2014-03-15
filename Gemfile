@@ -44,6 +44,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#i18n
+gem 'rails-i18n'
+
 #cocoon for nested forms
 gem 'cocoon'
 

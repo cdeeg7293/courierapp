@@ -1,0 +1,48 @@
+ru:
+  activerecord:
+    models:
+      order: 
+        one: заказ
+        few: заказа
+        many: заказов
+        other: заказы
+      client:
+        one: клиент
+        few: клиента
+        many: клиентов
+        other: клиенты
+      courier:
+        one: курьер
+        few: курьера
+        many: курьеров
+        other: курьеры
+      contact_type:
+        one: "тип контакта"
+        few: "типа контактов"
+        many: "типов контактов"
+        other: "типы контактов"
+      address:
+        one: "адрес"
+        few: "адреса"
+        many: "адресов"
+        other: "адреса"
+    attributes:
+      order:
+        number: "Номер заказа"
+        sender_id: Отправитель
+        receiver_id: Получатель
+        sum: "Сумма заказа"
+        delivered_date: "Дата доставки"
+        issued_date: "Дата оформления"
+      client:
+        full_name: "Полное имя"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        patronymic: "Отчество"
+      contact_type:
+        type_name: "Название типа"
+      address:
+        city: "Город"
+        street: Улица
+        building: Дом
+        apartment: "Квартира/офис"

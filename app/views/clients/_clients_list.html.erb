@@ -27,7 +27,9 @@
           <%= link_to edit_client_path(client), class: 'btn btn-primary' do %>
             <i class="icon-pencil icon-white"></i> Edit
           <% end %>
-          <%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+            <i class="icon-remove icon-white"></i> Destroy
+          <% end %>
         </td>
       </tr>
     <% end %>
