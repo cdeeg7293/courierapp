@@ -4,7 +4,7 @@ class CouriersController < ApplicationController
   # GET /couriers
   # GET /couriers.json
   def index
-    @couriers = Courier.all
+    @couriers = Courier.paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /couriers/1

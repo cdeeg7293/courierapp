@@ -35,10 +35,12 @@ ru:
         delivered_date: "Дата доставки"
         issued_date: "Дата оформления"
       client:
+        is_person: "Физ. лицо"
         full_name: "Полное имя"
         first_name: "Имя"
         last_name: "Фамилия"
         patronymic: "Отчество"
+        address: "Адрес"
       contact_type:
         type_name: "Название типа"
       address:

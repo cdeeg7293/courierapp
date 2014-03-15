@@ -5,9 +5,6 @@
       <div class="block">
         <div class="navbar navbar-inner block-header">
           <div class="muted pull-left"><h3><%= model.model_name.human(:count => "many").mb_chars.capitalize.to_s %></h3></div>
-          <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_polymorphic_path(model.take),
-            class: 'btn btn-primary pull-right' %>
         </div>
         <div class="block-content collapse in">
           <div class="span12">

@@ -1,7 +1,7 @@
 <%- model_class = Client 
     clients = model
 -%>
-<table class = "table table-bordered">
+<table class = "table table-bordered table-striped">
   <thead>
     <tr>
       <% if !return_url.nil? %>
@@ -30,3 +30,7 @@
     <% end %>
   </tbody>
 </table> 
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+    new_client_path,
+    class: 'btn btn-primary pull-right' %>

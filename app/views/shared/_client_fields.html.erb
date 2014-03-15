@@ -1,26 +1,35 @@
 
+<div class="control-group">
+    <%= f.label :is_person, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_person, :class => 'check_box' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :is_person %><br>
-    <%= f.check_box :is_person %>
-  </div>
+<div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
+<div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, :class => 'text_field' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
+<div class="control-group">
+    <%= f.label :patronymic, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :patronymic, :class => 'text_field' %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :patronymic %><br>
-    <%= f.text_field :patronymic %>
-  </div>
-
-<h3> Address </h3>
+<div class="control-group">
+<span class="control-label" ><b><%= t('activerecord.attributes.client.address') %></b></span>
+</div>
 <div id="address">
   <%= f.fields_for :address do |addr| %>
     <% render "shared/address_fields", :f => addr %>

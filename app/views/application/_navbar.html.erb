@@ -25,7 +25,7 @@
         <ul class="nav">
         <% model_list.each do |model| %>
           <!-- model == controller.controller_name -->
-          <li class= <%= current_page?(controller: model.to_sym) ? 'active' : nil %> >
+          <li class= "<%= current_page?(controller: model.to_sym) ? 'active' : nil %>" >
            <%= link_to model, controller: model %>
           </li>
         <% end %>

@@ -4,7 +4,7 @@ class ContactTypesController < ApplicationController
   # GET /contact_types
   # GET /contact_types.json
   def index
-    @contact_types = ContactType.all
+    @contact_types = ContactType.paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /contact_types/1

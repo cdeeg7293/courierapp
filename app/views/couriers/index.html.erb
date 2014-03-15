@@ -1,32 +1,3 @@
-<%- model_class = Courier -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human(:count => "many").mb_chars.capitalize.to_s %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:client_id) %></th>
-      <th><%= model_class.human_attribute_name(:address_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @couriers.each do |courier| %>
-      <tr>
-        <td><%= link_to courier.id, courier_path(courier) %></td>
-        <td><%= courier.client_id %></td>
-        <td><%= courier.address_id %></td>
-        <td><%=l courier.created_at %></td>
-        <td>
-          <%= render "table_actions", model: courier %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_courier_path,
-            :class => 'btn btn-primary' %>
+<%= render "universal_index_partial", model: @couriers, table_locals: { model: @couriers } %>
+
