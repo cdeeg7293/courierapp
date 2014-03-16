@@ -10,6 +10,11 @@ class Client < ActiveRecord::Base
   
   has_many :sended_orders, :class_name => Order, :foreign_key => :sender_id
   has_many :received_orders, :class_name => Order, :foreign_key => :receiver_id
+  
+  validates :last_name, presence: true
+  validates :first_name, :patronymic, presence: true, if: Proc.new { |client| client.is_person }
+  
+  validates :address, presence: true
 
   def full_name
     last_name + ' ' + first_name + ' ' + patronymic

@@ -8,6 +8,7 @@ class Courier < ActiveRecord::Base
   belongs_to :address
   accepts_nested_attributes_for :address, :reject_if => :all_blank, update_only: true
 
+  validates :client, :address, presence: true
 private
 
   def create_associated_client
