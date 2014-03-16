@@ -1,0 +1,35 @@
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+
+<%= content_tag :div, class: "address_data", data: {address: client} do %>
+<% end %>
+
+<div id="map" style="width: inherit; height: 400px"></div>
+
+<script type="text/javascript">
+    ymaps.ready(init);
+    var myMap;
+
+    function init(){     
+        ymaps.geocode("Донецк").then(function (res) {
+            myMap = new ymaps.Map('map', {
+                center: res.geoObjects.get(0).geometry.getCoordinates(),
+                zoom : 12
+            });
+
+            myMap.controls.add('mapTools');
+            myMap.controls.add('zoomControl');
+            myMap.controls.add('scaleLine');
+
+            alert($(.address_data).data('address.latitude'));
+            
+            clientGeoObject = new ymaps.GeoObject({
+              geometry: {
+                type: "Point",// тип геометрии - точка
+                coordinates: [<%=client.latitude%>, <%=client.longtitude%>] // координаты точки
+              }
+            });
+            myMap.geoObjects.add(clientGeoObject);
+        });
+ 
+    }
+</script> 
