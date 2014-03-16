@@ -28,7 +28,7 @@ class ContactTypesController < ApplicationController
 
     respond_to do |format|
       if @contact_type.save
-        format.html { redirect_to @contact_type, notice: 'Contact type was successfully created.' }
+        format.html { redirect_to contact_types_url, notice: 'Contact type was successfully created.' }
         format.json { render action: 'show', status: :created, location: @contact_type }
       else
         format.html { render action: 'new' }
