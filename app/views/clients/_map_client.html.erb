@@ -10,26 +10,24 @@
     var myMap;
 
     function init(){     
-        ymaps.geocode("Донецк").then(function (res) {
+
             myMap = new ymaps.Map('map', {
-                center: res.geoObjects.get(0).geometry.getCoordinates(),
+                center: [<%=client.latitude%>, <%=client.longitude%>],
                 zoom : 12
             });
 
             myMap.controls.add('mapTools');
             myMap.controls.add('zoomControl');
             myMap.controls.add('scaleLine');
-
-            alert($(.address_data).data('address.latitude'));
             
             clientGeoObject = new ymaps.GeoObject({
               geometry: {
                 type: "Point",// тип геометрии - точка
-                coordinates: [<%=client.latitude%>, <%=client.longtitude%>] // координаты точки
+                coordinates: [<%=client.latitude%>, <%=client.longitude%>] // координаты точки
               }
             });
             myMap.geoObjects.add(clientGeoObject);
-        });
+        
  
     }
 </script> 
