@@ -29,8 +29,8 @@ ru:
     attributes:
       order:
         number: "Номер заказа"
-        sender_id: Отправитель
-        receiver_id: Получатель
+        sender: Отправитель
+        receiver: Получатель
         sum: "Сумма заказа"
         delivered_date: "Дата доставки"
         issued_date: "Дата оформления"

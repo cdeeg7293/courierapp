@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CourierApp</title>
+  <title><%= content_for?(:title) ? yield(:title) : "CourierApp" %></title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -14,7 +14,8 @@
   <%= render "navbar" %>
   <div class="container-fluid">
     <div class="row-fluid"> 
-
+    
+    <%= bootstrap_flash %>
     <%= yield %>
     
     </div>

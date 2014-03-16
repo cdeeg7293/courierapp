@@ -1,4 +1,4 @@
-<%= form_for @courier, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @courier, :html => { :class => 'form-horizontal' } do |f| %>
 
   <%= f.fields_for :client do |cl| %>
     <% render "/shared/client_fields", f: cl %>
