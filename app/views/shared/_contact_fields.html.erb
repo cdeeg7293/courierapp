@@ -1,11 +1,5 @@
 <div class="nested-fields">
-  <div class="control-group">
-    <%= f.label :contact_type_id, :class => 'control-label'  %>
-    <%= f.collection_select :contact_type_id, ContactType.all, :id, :type_name,:class => 'text_field' %>
-  </div>
-  <div class="control-group">
-    <%= f.label :value, :class => 'control-label'  %><br>
-    <%= f.text_field :value, :class => 'text_field'%>
-  </div>
+    <%= f.input :contact_type_id, collection: ContactType.all, :label_method => :type_name %>
+    <%= f.input :value %>
   <%= link_to_remove_association "remove contact", f , :class => 'btn'%>
 </div>

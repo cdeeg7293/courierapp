@@ -1,48 +1,27 @@
 
-<div class="control-group">
-    <%= f.label :is_person, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :is_person, :class => 'check_box' %>
-    </div>
-</div>
+<%= f.input :is_person, :class => 'check_box' %>
+<%= f.input :last_name, :class => 'text_field' %>
+<%= f.input :first_name, :class => 'text_field' %>
+<%= f.input :patronymic, :class => 'text_field' %>
 
 <div class="control-group">
-    <%= f.label :last_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :last_name, :class => 'text_field' %>
-    </div>
-</div>
-
-<div class="control-group">
-    <%= f.label :first_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :first_name, :class => 'text_field' %>
-    </div>
-</div>
-
-<div class="control-group">
-    <%= f.label :patronymic, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :patronymic, :class => 'text_field' %>
-    </div>
-</div>
-
-<div class="control-group">
-<span class="control-label" ><b><%= t('activerecord.attributes.client.address') %></b></span>
+  <span class="control-label" ><b><%= t('activerecord.attributes.client.address') %></b></span>
 </div>
 <div id="address">
-  <%= f.fields_for :address do |addr| %>
+  <%= f.simple_fields_for :address do |addr| %>
     <% render "shared/address_fields", :f => addr %>
   <% end %>
 </div>
 
-<h3> Contacts </h3>
-  <div id="contacts">
-    <%= f.fields_for :contacts do |contact| %>
-      <%= render 'shared/contact_fields', :f => contact %>
-    <% end %>
-    <div class="links"> 
-      <%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' , :class => 'btn'%>
-    </div>
+<div class="control-group">
+  <span class="control-label" ><b><%= t('activerecord.attributes.client.contacts') %></b></span>
+</div>
+<div id="contacts">
+  <%= f.simple_fields_for :contacts do |contact| %>
+    <%= render 'shared/contact_fields', :f => contact %>
+  <% end %>
+  <div class="links"> 
+    <%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' , :class => 'btn'%>
   </div>
+</div>
 

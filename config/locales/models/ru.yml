@@ -41,6 +41,7 @@ ru:
         last_name: "Фамилия"
         patronymic: "Отчество"
         address: "Адрес"
+        contacts: "Контактные данные"
       contact_type:
         type_name: "Название типа"
         created_at: "Дата создания"
@@ -50,5 +51,5 @@ ru:
         building: Дом
         apartment: "Квартира/офис"
       contact:
-        contact_type: "Тип контакта"
+        contact_type_id: "Тип контакта"
         value: "Значение"
