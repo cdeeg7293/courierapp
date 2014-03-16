@@ -61,3 +61,6 @@ gem 'twitter-bootstrap-rails'
 
 #will_paginate bootstrap style
 gem 'will_paginate-bootstrap', '0.2.5'
+
+#simple_form (using with bootstrap)
+gem 'simple_form'
