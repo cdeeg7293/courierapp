@@ -40,8 +40,9 @@
   <div id="contacts">
     <%= f.fields_for :contacts do |contact| %>
       <%= render 'shared/contact_fields', :f => contact %>
-<% end %>
+    <% end %>
     <div class="links"> 
-      <%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' %>
+      <%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' , :class => 'btn'%>
     </div>
-    
+  </div>
+

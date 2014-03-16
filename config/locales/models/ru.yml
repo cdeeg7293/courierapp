@@ -43,8 +43,12 @@ ru:
         address: "Адрес"
       contact_type:
         type_name: "Название типа"
+        created_at: "Дата создания"
       address:
         city: "Город"
         street: Улица
         building: Дом
         apartment: "Квартира/офис"
+      contact:
+        contact_type: "Тип контакта"
+        value: "Значение"

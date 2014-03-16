@@ -14,7 +14,7 @@
     <% contact_types.each do |contact_type| %>
       <tr>
         <td><%= contact_type.type_name %></td>
-        <td><%=l contact_type.created_at %></td>
+        <td><%= l contact_type.created_at, format: :long %></td>
         <td>
           <%= render "table_actions", model: contact_type, without_show: true %>
         </td>
