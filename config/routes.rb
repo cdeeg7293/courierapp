@@ -1,4 +1,6 @@
 Clientcontacttest::Application.routes.draw do
+  get "order_routing/index"
+  get "order_routing/route_orders"
   resources :orders do
     collection do
       get 'select_sender_or_receiver', as: :select_srr
