@@ -20,7 +20,6 @@ class Client < ActiveRecord::Base
     last_name + ' ' + first_name + ' ' + patronymic
   end
 
-  private 
 
   def create_associated
     self.contacts.build if self.contacts.empty?
