@@ -66,4 +66,7 @@ gem 'will_paginate-bootstrap', '0.2.5'
 gem 'simple_form'
 
 #gem for geocoding
-gem "geocoder"
+gem 'geocoder'
+
+#gem for index page filtering with scopes
+gem 'has_scope'
