@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+  #for filtering:
+  include Filterable
+  
   belongs_to :sender,   :class_name => Client
   belongs_to :receiver, :class_name => Client
   

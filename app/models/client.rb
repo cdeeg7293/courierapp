@@ -15,6 +15,10 @@ class Client < ActiveRecord::Base
   validates :first_name, :patronymic, presence: true, if: Proc.new { |client| client.is_person }
   
   validates :address, presence: true
+  
+  scope :by_last_name,  -> lname { where("last_name LIKE ?", lname) }
+  scope :by_first_name, -> fname { where("first_name LIKE ?", fname) }
+  scope :by_patronymic, -> patr  { where("patronymic LIKE ?", patr) }
 
   def full_name
     last_name + ' ' + first_name + ' ' + patronymic
