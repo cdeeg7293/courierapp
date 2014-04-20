@@ -1,4 +1,7 @@
 class Client < ActiveRecord::Base
+  
+  include Filterable
+  
   after_initialize :create_associated, :if => :new_record?
   after_destroy :destroy_address
 

@@ -1,0 +1,6 @@
+<%= form_tag clients_path, method: 'get'  do %>
+  <%= text_field_tag :last_name, params[:last_name] %>
+  <%= text_field_tag :first_name, params[:first_name] %>
+  <%= text_field_tag :patronymic, params[:patronymic] %>
+  <%= submit_tag 'Filter' %>
+<% end %>

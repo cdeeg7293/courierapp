@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+	clear_session_client_values
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
@@ -80,7 +81,7 @@ class OrdersController < ApplicationController
     end
     
     def index_params
-      params.permit(:number)
+      params.permit(:number, :issue_date_start, :issue_date_end, :delivery_date_start, :delivery_date_end, :sender_id, :receiver_id)
     end
     
     def load_sender_and_receiver
@@ -93,5 +94,10 @@ class OrdersController < ApplicationController
       if receiver_id 
 	@receiver = Client.find(receiver_id)
       end
+    end
+    
+    def clear_session_client_values
+      set_session_value(:sender, nil)
+      set_session_value(:receiver, nil)
     end
 end

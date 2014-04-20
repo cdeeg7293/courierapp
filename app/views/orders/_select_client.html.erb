@@ -1,0 +1,8 @@
+<% obj = local_object.nil?  ? model_object : local_object %>
+<div class="input-append">
+  <% unless obj.nil? %>
+  <span class="input uneditable-input"> <%= obj.full_name %> </span>
+  <%= f.hidden_field(target.to_s + '_id', :value => obj.id) %>
+  <% end %>
+  <%= link_to '...', select_srr_orders_path(:srflag => target), class: 'btn' %>
+</div>

@@ -10,4 +10,8 @@ class Address < ActiveRecord::Base
   def full_address
     city + ' ' + street + ' ' + building + ' ' + apartment.to_s
   end
+  
+  def full_address_rus
+    'г. ' + city + ' ул. ' + street + ' д. ' + building + ' кв. ' + apartment.to_s
+  end
 end

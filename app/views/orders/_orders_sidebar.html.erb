@@ -1,0 +1,42 @@
+<%= form_tag orders_path, method: 'get', :html => { :class => 'form-horizontal' } do %>
+  <div class="control-group">
+    <%= label_tag 'Number' %>
+    <div class="controls">
+      <%= text_field_tag :number, params[:number] %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= label_tag 'Issue date start' %>
+    <div class="controls">
+      <%= text_field_tag :issue_date_start, params[:issue_date_start] %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= label_tag 'Issue date end' %>
+    <div class="controls">
+      <%= text_field_tag :issue_date_end, params[:issue_date_end] %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= label_tag 'Delivery date start' %>
+    <div class="controls">
+      <%= text_field_tag :delivery_date_start, params[:delivery_date_start] %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= label_tag 'Delivery date end' %>
+    <div class="controls">
+      <%= text_field_tag :delivery_date_end, params[:delivery_date_end] %>
+    </div>
+  </div>
+  
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+<!--<script type='text/javascript' >
+  $('input[id^=date]').datepicker();
+</script> -->

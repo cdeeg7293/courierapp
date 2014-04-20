@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.includes(:address).paginate(:page => params[:page], :per_page => 5)
+    @clients = Client.includes(:address).filter(index_params.slice(:last_name, :first_name, :patronymic)).paginate(:page => params[:page], :per_page => 5)
     
     @return_url = get_session_value(:return_url) || nil
   end
@@ -98,6 +98,11 @@ class ClientsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       params.require(:client).permit(:last_name, :first_name, :patronymic, :is_person, address_attributes: [:id, :city, :street, :building, :apartment], contacts_attributes: [:id, :contact_type_id, :value, :_destroy])
+    end
+    
+    #strong_params for index filtering
+    def index_params
+      params.permit(:last_name, :first_name, :patronymic)
     end
     
 end

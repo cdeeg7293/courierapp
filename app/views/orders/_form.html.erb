@@ -2,35 +2,13 @@
   <div class="control-group">
     <%= f.label :sender %>
     <div class="controls">
-      <div class="input-append">
-      <% if @sender.nil? %>
-	<% if !@order.sender.nil?%>
-	  <span class="input-xlarge uneditable-input"> <%= @order.sender.full_name %> </span>
-	  <%= f.hidden_field :sender_id, :value => @order.sender.id %>
-	<% end %>
-      <% else %>
-	<span class="input-xlarge uneditable-input"> <%= @sender.full_name %> </span>
-	<%= f.hidden_field :sender_id, :value => @sender.id %>
-      <% end %>
-      <%= link_to "Select sender", select_srr_orders_path(:srflag => :sender), class: 'btn' %>
-      </div>
+      <%= render partial: "select_client", locals: { local_object: @sender, model_object: @order.sender, target: :sender, f: f } %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :receiver %>
     <div class="controls">
-      <div class="input-append">
-	<% if @receiver.nil? %>
-	  <% if !@order.receiver.nil?%>
-	    <span class="input-xlarge uneditable-input"> <%= @order.receiver.full_name %> </span>
-	    <%= f.hidden_field(:receiver_id, :value => @order.receiver.id) %>
-	  <% end %>
-	<% else %>
-	    <span class="input-xlarge uneditable-input"> <%= @receiver.full_name %> </span>
-	    <%= f.hidden_field :receiver_id, :value => @receiver.id %>
-	<% end %>
-	<%= link_to "Select receiver", select_srr_orders_path(:srflag => :receiver), class: 'btn' %>
-      </div>
+      <%= render partial: "select_client", locals: { local_object: @receiver, model_object: @order.receiver, target: :receiver, f: f } %>
     </div>
   </div>
   

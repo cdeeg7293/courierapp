@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
   
   validates :sender_id, :receiver_id, presence: true
   #taken from stackoverflow
-  validates :sum, :format => { :with => /\A\d+??(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :less_than => 10}
+  validates :sum, :format => { :with => /\A\d+??(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, :less_than => 1000000}
   
   #scopes
   scope :by_issue_date, -> date_beg, date_end { where("issued_date >= ? AND issued_date <= ?", date_beg, date_end) }
