@@ -68,4 +68,6 @@ gem 'simple_form'
 #gem for geocoding
 gem 'geocoder'
 
+gem 'devise'
+
 

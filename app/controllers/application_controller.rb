@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :model_list
   
   before_action :set_russian_locale
+  before_action :authenticate_user!
   
   #function for getting values from session
   def get_session_value(id)

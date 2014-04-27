@@ -1,4 +1,5 @@
 Clientcontacttest::Application.routes.draw do
+  devise_for :users
   get "order_routing/index"
   get "order_routing/route_orders"
   resources :orders do
