@@ -33,6 +33,10 @@ class Route
     Route.new(self.length, self.waypoints.clone)
   end
   
+  def each
+    @waypoints.each { |w| yield w }
+  end
+  
   #maybe explicit clone function needed?
 end
     

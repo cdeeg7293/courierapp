@@ -4,6 +4,9 @@ require 'route'
 require 'route_point'
 
 class RouteFinder
+  
+  attr_reader :best_route
+  
   def initialize(senders, receivers, origin_point)
     @senders = senders
     @receivers = receivers
@@ -21,15 +24,17 @@ class RouteFinder
     if @senders.length == 0 || @receivers.length == 0
       return []
     end
-      
-    @senders.each_with_index do |sender, index|
+    
+    @senders.each_with_index do |sender, sender_index|
       new_route = Route.new
       visited_places = []
-      distance = distance(sender, @origin_point)
-      new_route.add_waypoint(RoutePoint.new(index, sender), distance)
-      visited_places.push(index)
+      distance = distance(-1, sender_index) #-1 means origin_point
+      new_route.add_waypoint(sender_index, distance)
+      visited_places.push(sender_index)
       find_best_route_recursive(new_route, visited_places)
     end
+    
+    return buildCoordRoute
   end
   
   private
@@ -45,7 +50,7 @@ class RouteFinder
     j = 0
     while i < order_count
       while j < order_count
-	@distance_matrix[i][j] = distance(@senders[i], @senders[j])
+	@distance_matrix[i][j] = distance_internal(@senders[i], @senders[j])
 	j += 1
       end
       i += 1
@@ -55,7 +60,7 @@ class RouteFinder
     j = 0
     while i < order_count
       while j < order_count
-	@distance_matrix[i + order_count][j + order_count] = distance(@receivers[i], @receivers[j])
+	@distance_matrix[i + order_count][j + order_count] = distance_internal(@receivers[i], @receivers[j])
 	j += 1
       end
       i += 1
@@ -65,7 +70,7 @@ class RouteFinder
     j = 0
     while i < order_count
       while j < order_count
-	@distance_matrix[i][j + order_count] = distance(@senders[i], @receivers[j])
+	@distance_matrix[i][j + order_count] = distance_internal(@senders[i], @receivers[j])
 	j += 1
       end
       i += 1
@@ -75,18 +80,27 @@ class RouteFinder
     j = 0
     while i < order_count
       while j < order_count
-	@distance_matrix[i + order_count][j] = distance(@receivers[i], @senders[j])
+	@distance_matrix[i + order_count][j] = distance_internal(@receivers[i], @senders[j])
 	j += 1
       end
       i += 1
     end
     #senders to origin point, receivers to origin point
-    @distance_matrix[i]
+    @origin_distance_array = Array.new(order_count * 2) { 0 }
+    i = 0
+    while i < order_count * 2
+      if i < order_count
+	@origin_distance_array[i] = distance_internal(@origin_point, @senders[i])
+      else
+	@origin_distance_array[i] = distance_internal(@origin_point, @receivers[i - order_count])
+      end
+      i += 1
+    end
     
   @order_count = order_count
 end
     
-  def distance(start_coords, end_coords)
+  def distance_internal(start_coords, end_coords)
     #converting degrees to radians
     lat_start = start_coords.latitude * Math::PI / 180
     lng_start = start_coords.longitude * Math::PI / 180
@@ -99,8 +113,9 @@ end
   end
   
   def find_best_route_recursive(route, visited_places)
+    
     if visited_places.length == @receivers.length * 2 
-      length_to_add = distance(route.last_waypoint.point, @origin_point)
+      length_to_add = distance(route.last_waypoint, -1)
       if route.length < @best_route.length
 	@best_route = route.clone
       end
@@ -123,14 +138,14 @@ end
     possible_receivers.each { |rec| possible_waypoints.push(rec + @order_count) }
     
     possible_waypoints.each do |pw|
-      new_link_length = @distance_matrix[route.last_waypoint.number][pw]
+      new_link_length = @distance_matrix[route.last_waypoint][pw]
       
       if (new_link_length + route.length) > @best_route.length
 	return
       end
       
       new_route = route.clone
-      new_route.add_waypoint(RoutePoint.new(pw, getPointByNumber(pw)), new_link_length)
+      new_route.add_waypoint(pw, new_link_length)
       
       new_visited_places = visited_places.clone
       new_visited_places.push(pw)
@@ -139,15 +154,26 @@ end
       new_route.remove_last_waypoint
     end
   end
-    
   
-  def getPointByNumber(number)
-    order_count = @senders.length
-    if number >= order_count
-      return @receivers[number - order_count]
+  def distance(start_number, end_number)
+    if start_number < 0 
+      return @origin_distance_array[end_number]
+    elsif end_number < 0 
+      return @origin_distance_array[start_number]
     else
-      return @senders[number]
+      return @distance_matrix[start_number][end_number]
     end
   end
   
+  def buildCoordRoute
+    coord_route = []
+    best_route.each do |route_point| 
+      if (route_point < @senders.length)
+	coord_route.push(@senders[route_point])
+      else
+	coord_route.push(@receivers[route_point - @senders.length])
+      end
+    end
+    return coord_route
+  end
 end

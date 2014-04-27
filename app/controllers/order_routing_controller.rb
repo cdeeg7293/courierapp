@@ -22,7 +22,21 @@ class OrderRoutingController < ApplicationController
     
     router = RouteFinder.new(@senders_coords, @receivers_coords, @op)
     
-    @best_route = router.find_best_route
+    route = router.find_best_route
+    
+    route_array = []
+    route_array.push(@op.to_a)
+    
+    route.each do |r|
+      coord_array = []
+      coord_array.push(r.latitude)
+      coord_array.push(r.longitude)
+      route_array.push(coord_array)
+    end
+    
+    route_array.push(@op.to_a)
+    
+    @best_route = route_array.to_json
     
   end
 
