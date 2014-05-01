@@ -16,12 +16,24 @@
 	      center: res.geoObjects.get(0).geometry.getCoordinates(),
 	      zoom: 11
 	  });
-
-      ymaps.route(<%= @best_route %>).then(function (route) {
-	  myMap.geoObjects.add(route);
-      }, function (error) {
-	  alert('Возникла ошибка: ' + error.message);
-      });
+      
+      $.ajax({
+                url: '<%= order_routing_route_orders_path %>',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+		  ymaps.route(data).then(function (route) {
+		      myMap.geoObjects.add(route);
+		  }, function (error) {
+		      alert('Возникла ошибка: ' + error.message);
+		  });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+      
     });
 }
 </script> 

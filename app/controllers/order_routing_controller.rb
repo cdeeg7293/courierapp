@@ -3,6 +3,9 @@ require 'route_finder'
 
 class OrderRoutingController < ApplicationController
   def index
+  end
+
+  def route_orders
     @orders = Order.where("delivered_date >= ?", DateTime.current)
     
     @senders_coords = []
@@ -35,11 +38,7 @@ class OrderRoutingController < ApplicationController
     end
     
     route_array.push(@op.to_a)
-    
-    @best_route = route_array.to_json
-    
-  end
-
-  def route_orders
+     
+    render :json => route_array.to_json
   end
 end
