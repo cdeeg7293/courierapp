@@ -2,34 +2,28 @@
 <p>Find me in app/views/order_routing/index.html.erb</p>
 
 <%= @best_route.to_s %>
-<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU&load=package.full" type="text/javascript"></script>
 
 <div id="map" style="width: inherit; height: 400px"></div>
 
 <script type="text/javascript">
     ymaps.ready(init);
     var myMap;
+    
+    function init(){ 
+    ymaps.geocode("Донецк").then(function (res) {
+      var myMap = new ymaps.Map("map", {
+	      center: res.geoObjects.get(0).geometry.getCoordinates(),
+	      zoom: 11
+	  });
 
-    function init(){     
-
-            myMap = new ymaps.Map('map', {
-                center: [47, 35],
-                zoom : 12
-            });
-
-            myMap.controls.add('mapTools');
-            myMap.controls.add('zoomControl');
-            myMap.controls.add('scaleLine');
-            
-            ymaps.route(<%= @best_route %>).then(
-		function (route) {
-		    myMap.geoObjects.add(route);
-		},
-		function (error) {
-		    alert("Возникла ошибка: " + error.message);
-		}
-	    );
-    }
+      ymaps.route(<%= @best_route %>).then(function (route) {
+	  myMap.geoObjects.add(route);
+      }, function (error) {
+	  alert('Возникла ошибка: ' + error.message);
+      });
+    });
+}
 </script> 
 
 
