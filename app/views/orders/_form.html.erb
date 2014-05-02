@@ -1,4 +1,5 @@
 <%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
   <div class="control-group">
     <%= f.label :sender %>
     <div class="controls">

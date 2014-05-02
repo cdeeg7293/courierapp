@@ -7,11 +7,11 @@ class ClientsController < ApplicationController
   def index
     #for making a parameter if a checkbox is not checked
     ip = index_params
-    if ip[:is_person].nil?
+    if ip[:is_person].nil? && !ip[:commit].nil?
       ip[:is_person] = 0
     end
     
-    @clients = Client.includes(:address).filter(ip).paginate(:page => params[:page], :per_page => 5)
+    @clients = Client.includes(:address).filter(ip.slice(:is_person, :last_name, :first_name, :patronymic, :address_str)).paginate(:page => params[:page], :per_page => 5)
     
     @return_url = get_session_value(:return_url) || nil
   end
@@ -108,7 +108,7 @@ class ClientsController < ApplicationController
     
     #strong_params for index filtering
     def index_params
-      params.permit(:is_person, :last_name, :first_name, :patronymic)
+      params.permit(:is_person, :last_name, :first_name, :patronymic, :address_str, :commit)
     end
     
 end

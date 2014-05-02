@@ -23,6 +23,7 @@ class Client < ActiveRecord::Base
   scope :by_last_name,  -> lname { where("last_name LIKE ?", lname) }
   scope :by_first_name, -> fname { where("first_name LIKE ?", fname) }
   scope :by_patronymic, -> patr  { where("patronymic LIKE ?", patr) }
+  scope :by_address_str, -> addr { includes(:address).where("addresses.city LIKE ? OR addresses.street LIKE ?", addr, addr) }
 
   def full_name
     last_name + ' ' + first_name + ' ' + patronymic
