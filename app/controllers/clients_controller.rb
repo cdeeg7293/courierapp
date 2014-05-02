@@ -5,7 +5,13 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.includes(:address).filter(index_params.slice(:last_name, :first_name, :patronymic)).paginate(:page => params[:page], :per_page => 5)
+    #for making a parameter if a checkbox is not checked
+    ip = index_params
+    if ip[:is_person].nil?
+      ip[:is_person] = 0
+    end
+    
+    @clients = Client.includes(:address).filter(ip).paginate(:page => params[:page], :per_page => 5)
     
     @return_url = get_session_value(:return_url) || nil
   end
@@ -102,7 +108,7 @@ class ClientsController < ApplicationController
     
     #strong_params for index filtering
     def index_params
-      params.permit(:last_name, :first_name, :patronymic)
+      params.permit(:is_person, :last_name, :first_name, :patronymic)
     end
     
 end

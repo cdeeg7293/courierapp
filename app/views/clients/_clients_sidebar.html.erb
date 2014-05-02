@@ -1,6 +1,26 @@
-<%= form_tag clients_path, method: 'get'  do %>
-  <%= text_field_tag :last_name, params[:last_name] %>
-  <%= text_field_tag :first_name, params[:first_name] %>
-  <%= text_field_tag :patronymic, params[:patronymic] %>
-  <%= submit_tag 'Filter' %>
+<%= form_tag clients_path, method: 'get', class:'form-horizontal' do %>
+  <%= field_set_tag do %>
+  <div class='form-group'>
+    <%= label_tag :is_person, nil, class: 'checkbox-inline' do %>
+      <%= check_box_tag :is_person, 1, !params[:is_person].nil? %>
+      <%= t('activerecord.attributes.client.is_person') %>
+    <% end %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :last_name, t('activerecord.attributes.client.last_name') %>
+    <%= text_field_tag :last_name, params[:last_name], class: 'input-medium' %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :first_name, t('activerecord.attributes.client.first_name') %>
+    <%= text_field_tag :first_name, params[:first_name], class: 'input-medium' %>
+  </div>
+  <div class='form-group'>
+    <%= label_tag :patronymic, t('activerecord.attributes.client.patronymic') %>
+    <%= text_field_tag :patronymic, params[:patronymic], class: 'input-medium' %>
+  </div>
+  <div class='form-group'>
+    <%= submit_tag 'Filter', class: 'btn btn-normal' %>
+    <%= link_to 'Clear', clients_path, class: 'btn btn-normal' %>
+  </div>
+  <% end %>
 <% end %>

@@ -19,6 +19,7 @@ class Client < ActiveRecord::Base
   
   validates :address, presence: true
   
+  scope :by_is_person,  -> isp   { where("is_person = ?", (isp == 0 ? false : true)) }
   scope :by_last_name,  -> lname { where("last_name LIKE ?", lname) }
   scope :by_first_name, -> fname { where("first_name LIKE ?", fname) }
   scope :by_patronymic, -> patr  { where("patronymic LIKE ?", patr) }
