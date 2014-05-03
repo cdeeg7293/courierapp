@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.includes(:sender, :receiver).filter(index_params.slice(:number)).paginate(:page => params[:page], :per_page => 15)
+    @orders = Order.includes(:sender, :receiver).filter(index_params.slice(:number, :issue_date_start, :issue_date_end, :delivery_date_start, :delivery_date_end)).paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /orders/1

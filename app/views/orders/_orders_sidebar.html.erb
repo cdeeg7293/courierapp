@@ -1,15 +1,8 @@
-<%= form_tag orders_path, method: 'get', :html => { :class => 'form-horizontal' } do %>
+<%= form_tag orders_path, method: 'get', :class => 'form-inline' do %>  
   <div class="control-group">
-    <%= label_tag 'Number' %>
+    <%= label_tag 'Issue date start', nil, class: 'control-label' %>
     <div class="controls">
-      <%= text_field_tag :number, params[:number] %>
-    </div>
-  </div>
-  
-  <div class="control-group">
-    <%= label_tag 'Issue date start' %>
-    <div class="controls">
-      <%= text_field_tag :issue_date_start, params[:issue_date_start] %>
+      <%= text_field_tag :issue_date_start, params[:issue_date_start], class: 'input-mini' %>
     </div>
   </div>
   
@@ -34,7 +27,8 @@
     </div>
   </div>
   
-  <%= submit_tag 'Filter' %>
+  <%= submit_tag 'Filter', class: 'btn btn-normal' %>
+  <%= link_to 'Clear', orders_path, class: 'btn btn-normal' %>
 <% end %>
 
 <!--<script type='text/javascript' >
