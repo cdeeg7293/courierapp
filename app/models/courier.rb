@@ -9,6 +9,14 @@ class Courier < ActiveRecord::Base
   accepts_nested_attributes_for :address, :reject_if => :all_blank, update_only: true
 
   validates :client, :address, presence: true
+  
+  def address_living
+    return self.address
+  end
+  
+  def address_registration 
+    return self.client.address
+  end
 private
 
   def create_associated_client

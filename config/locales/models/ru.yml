@@ -34,6 +34,8 @@ ru:
         sum: "Сумма заказа"
         delivered_date: "Дата доставки"
         issued_date: "Дата оформления"
+        not_delivered: "Не доставлен"
+        delivered: "Доставлен"
       client:
         is_person: "Физ. лицо"
         full_name: "Полное имя"
@@ -53,3 +55,7 @@ ru:
       contact:
         contact_type_id: "Тип контакта"
         value: "Значение"
+      courier:
+        address_living: "Адрес проживания"
+        address_registration: "Адрес регистрации"
+        full_name: "ФИО"

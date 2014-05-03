@@ -2,12 +2,12 @@
     couriers = model
 -%>
 
-<table class="table table-striped">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:client_id) %></th>
-      <th><%= model_class.human_attribute_name(:address_id) %></th>
+      <th><%= model_class.human_attribute_name(:full_name) %></th>
+      <th><%= model_class.human_attribute_name(:address_registration) %></th>
+      <th><%= model_class.human_attribute_name(:address_living) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -15,10 +15,10 @@
   <tbody>
     <% couriers.each do |courier| %>
       <tr>
-        <td><%= link_to courier.id, courier_path(courier) %></td>
-        <td><%= courier.client_id %></td>
-        <td><%= courier.address_id %></td>
-        <td><%=l courier.created_at %></td>
+        <td><%= courier.client.full_name %></td>
+        <td><%= courier.address_registration.full_address_rus %></td>
+        <td><%= courier.address_living.full_address_rus %></td>
+        <td><%=l courier.created_at, format: :long %></td>
         <td>
           <%= render "table_actions", model: courier %>
         </td>

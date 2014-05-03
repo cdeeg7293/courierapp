@@ -25,6 +25,9 @@ class CouriersController < ApplicationController
   # POST /couriers.json
   def create
     @courier = Courier.new(courier_params)
+    
+    logger.debug(courier_params.inspect)
+    logger.debug(@courier.inspect)
 
     respond_to do |format|
       if @courier.save
@@ -69,6 +72,6 @@ class CouriersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def courier_params
-      params.require(:courier).permit(client_attributes: [:last_name, :first_name, :patronymic, address_attributes: [:id, :city, :street, :building, :apartment], contacts_attributes: [:id, :contact_type_id, :value, :_destroy]], address_attributes: [:id, :city, :street, :building, :apartment])
+      params.require(:courier).permit(client_attributes: [:id, :last_name, :first_name, :patronymic, address_attributes: [:id, :city, :street, :building, :apartment], contacts_attributes: [:id, :contact_type_id, :value, :_destroy] ], address_attributes: [:id, :city, :street, :building, :apartment])
     end
 end

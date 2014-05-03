@@ -1,14 +1,12 @@
 <%- model_class = Courier -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h3><%= @courier.client.full_name %></h3>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:client_id) %>:</strong></dt>
-  <dd><%= @courier.client_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address_id) %>:</strong></dt>
-  <dd><%= @courier.address_id %></dd>
-</dl>
+<h5> <b><%= t('activerecord.attributes.courier.address_registration') %></b> </h5>
+<%= render "shared/show_address", address: @courier.address_registration %>
+<h5> <b><%= t('activerecord.attributes.courier.address_living') %></b> </h5>
+<%= render "shared/show_address", address: @courier.address_living %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

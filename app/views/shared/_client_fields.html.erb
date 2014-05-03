@@ -1,36 +1,36 @@
 <div class = "row">
-<div class="span5">
-  <%= f.input :is_person, :class => 'check_box' %>
-  <%= f.input :last_name, :class => 'text_field' %>
-  <div class='person'>
-    <%= f.input :first_name, :class => 'text_field' %>
-    <%= f.input :patronymic, :class => 'text_field' %>
-  </div>
+  <div class="span5">
+    <%= f.input :is_person, :class => 'check_box' %>
+    <%= f.input :last_name, :class => 'text_field' %>
+    <div class='person'>
+      <%= f.input :first_name, :class => 'text_field' %>
+      <%= f.input :patronymic, :class => 'text_field' %>
+    </div>
 
-  <div class="control-group">
-    <span class="control-label" ><b><%= t('activerecord.attributes.client.address') %></b></span>
+    <div class="control-group">
+      <span class="control-label" ><b><%= t('activerecord.attributes.client.address') %></b></span>
+    </div>
+    <div id="address">
+      <%= f.simple_fields_for :address do |addr| %>
+	<% render "shared/address_fields", :f => addr %>
+      <% end %>
+    </div>
   </div>
-  <div id="address">
-    <%= f.simple_fields_for :address do |addr| %>
-      <% render "shared/address_fields", :f => addr %>
-    <% end %>
-  </div>
-</div>
-<div class="span6">
-  <div class="control-group">
-    <span class="control-label" ><b><%= t('activerecord.attributes.client.contacts') %></b></span>
-  </div>
-  <div id="contacts">
-    <%= f.simple_fields_for :contacts do |contact| %>
-      <%= render 'shared/contact_fields', :f => contact %>
-    <% end %>
-    <div class="links"> 
-      <%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' , :class => 'btn'%>
+  <div class="span6">
+    <div class="control-group">
+      <span class="control-label" ><b><%= t('activerecord.attributes.client.contacts') %></b></span>
+    </div>
+    <div id="contacts">
+      <%= f.simple_fields_for :contacts do |contact| %>
+	<%= render 'shared/contact_fields', :f => contact %>
+      <% end %>
+      <div class="links"> 
+	<%= link_to_add_association 'add contact', f, :contacts, :partial => 'shared/contact_fields' , :class => 'btn'%>
+      </div>
     </div>
   </div>
 </div>
-</div>
-<script>
+<script type="text/javascript">
 $(function () {
     $('#client_is_person').change(function () {
         if ($(this).is(':checked')) {

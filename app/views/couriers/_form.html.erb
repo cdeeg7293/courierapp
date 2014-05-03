@@ -1,15 +1,44 @@
 <%= simple_form_for @courier, :html => { :class => 'form-horizontal' } do |f| %>
 
-  <%= f.fields_for :client do |cl| %>
-    <% render "/shared/client_fields", f: cl %>
-  <% end %>
-  <h3> Address </h3>
-  <div id="address">
-  <%= f.fields_for :address do |addr| %>
-    <% render "/shared/address_fields", :f => addr %>
-  <% end %>
-  </div>
+  <%= f.simple_fields_for :client do |ff| %>
+  <div class = "row">
+    <div class="span5">
+      <%= ff.input :last_name, :class => 'text_field' %>
+      <%= ff.input :first_name, :class => 'text_field' %>
+      <%= ff.input :patronymic, :class => 'text_field' %>
 
+      <div class="control-group">
+	<span class="control-label" ><b><%= t('activerecord.attributes.courier.address_registration') %></b></span>
+      </div>
+      <div id="address">
+	<%= ff.simple_fields_for :address do |addr| %>
+	  <% render "shared/address_fields", :f => addr %>
+	<% end %>
+      </div>
+      <div class="control-group">
+	<span class="control-label" ><b><%= t('activerecord.attributes.courier.address_living') %></b></span>
+      </div>
+      <div id="address">
+	<%= f.simple_fields_for :address do |addr| %>
+	  <% render "shared/address_fields", :f => addr %>
+	<% end %>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="control-group">
+	<span class="control-label" ><b><%= t('activerecord.attributes.client.contacts') %></b></span>
+      </div>
+      <div id="contacts">
+	<%= ff.simple_fields_for :contacts do |contact| %>
+	  <%= render 'shared/contact_fields', :f => contact %>
+	<% end %>
+	<div class="links"> 
+	  <%= link_to_add_association 'add contact', ff, :contacts, :partial => 'shared/contact_fields' , :class => 'btn'%>
+	</div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
