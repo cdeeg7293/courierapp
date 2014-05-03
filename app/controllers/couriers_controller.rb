@@ -25,9 +25,6 @@ class CouriersController < ApplicationController
   # POST /couriers.json
   def create
     @courier = Courier.new(courier_params)
-    
-    logger.debug(courier_params.inspect)
-    logger.debug(@courier.inspect)
 
     respond_to do |format|
       if @courier.save
