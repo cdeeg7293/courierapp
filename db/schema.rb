@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427111002) do
+ActiveRecord::Schema.define(version: 20140503182027) do
 
   create_table "addresses", force: true do |t|
     t.string   "city"
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(version: 20140427111002) do
 
   add_index "couriers", ["address_id"], name: "index_couriers_on_address_id"
   add_index "couriers", ["client_id"], name: "index_couriers_on_client_id"
+
+  create_table "order_statuses", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "courier_id"
+    t.datetime "date_planned"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_statuses", ["courier_id"], name: "index_order_statuses_on_courier_id"
+  add_index "order_statuses", ["order_id"], name: "index_order_statuses_on_order_id"
 
   create_table "orders", force: true do |t|
     t.integer  "number"

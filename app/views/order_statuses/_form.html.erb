@@ -1,0 +1,11 @@
+<%= simple_form_for @order_status, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :order_id %>
+  <%= f.input :courier_id %>
+  <%= f.input :date_planned %>
+  <%= f.input :comment %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                order_statuses_path, :class => 'btn' %>
+  </div>
+<% end %>

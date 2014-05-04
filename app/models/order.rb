@@ -5,6 +5,8 @@ class Order < ActiveRecord::Base
   belongs_to :sender,   :class_name => Client
   belongs_to :receiver, :class_name => Client
   
+  has_many :order_statuses
+  
   before_create :set_dates
   after_create :set_number
   
