@@ -8,6 +8,9 @@ class OrderRoutingController < ApplicationController
   def route_orders
     @orders = Order.where("delivered_date >= ?", DateTime.current)
     
+    @orders = @orders.where("issued_date >= ?", DateTime.current.to_date.yesterday)
+    logger.debug(@orders.inspect)
+    
     @senders_coords = []
     @receivers_coords = []
     
@@ -21,7 +24,7 @@ class OrderRoutingController < ApplicationController
       @receivers_coords.push(receiver_coords)
     end
     
-    @op = Coordinates.new(48.01, 37.768)
+    @op = Coordinates.new(47.989936, 37.765762)
     
     router = RouteFinder.new(@senders_coords, @receivers_coords, @op)
     

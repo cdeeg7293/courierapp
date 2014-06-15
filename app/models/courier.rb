@@ -19,6 +19,11 @@ class Courier < ActiveRecord::Base
   def address_registration 
     return self.client.address
   end
+  
+  def full_name
+    return self.client.full_name
+  end
+  
 private
 
   def create_associated_client

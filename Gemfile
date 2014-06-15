@@ -70,4 +70,7 @@ gem 'geocoder'
 
 gem 'devise'
 
+#gem for postrgesql
+gem 'pg'
+
 

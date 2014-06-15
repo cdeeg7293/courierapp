@@ -5,7 +5,7 @@ class Address < ActiveRecord::Base
   validates :apartment, numericality: { only_integer: true }
   
   geocoded_by :full_address  
-  after_validation :geocode, if: ->(obj){ obj.changed? }          # auto-fetch coordinates
+  after_validation :geocode #, if: ->(obj){ obj.changed? }          # auto-fetch coordinates
   
   def full_address
     city + ' ' + street + ' ' + building + ' ' + apartment.to_s

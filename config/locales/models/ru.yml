@@ -26,6 +26,11 @@ ru:
         few: "адреса"
         many: "адресов"
         other: "адреса"
+      order_status:
+        one: "статус заказа"
+        few: "статусов заказа"
+        many: "статусов заказа"
+        other: "статусы заказа"
     attributes:
       order:
         number: "Номер заказа"
@@ -59,3 +64,8 @@ ru:
         address_living: "Адрес проживания"
         address_registration: "Адрес регистрации"
         full_name: "ФИО"
+      order_status:
+        courier: "Курьер"
+        order: "Заказ"
+        date_planned: "Планируемая дата"
+        comment: "Комментарий"

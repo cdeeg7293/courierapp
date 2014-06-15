@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140503182027) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: true do |t|
     t.string   "city"
     t.string   "street"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140503182027) do
     t.boolean  "is_person"
   end
 
-  add_index "clients", ["address_id"], name: "index_clients_on_address_id"
+  add_index "clients", ["address_id"], name: "index_clients_on_address_id", using: :btree
 
   create_table "contact_types", force: true do |t|
     t.string   "type_name"
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20140503182027) do
     t.integer  "contact_type_id"
   end
 
-  add_index "contacts", ["client_id"], name: "index_contacts_on_client_id"
-  add_index "contacts", ["contact_type_id"], name: "index_contacts_on_contact_type_id"
+  add_index "contacts", ["client_id"], name: "index_contacts_on_client_id", using: :btree
+  add_index "contacts", ["contact_type_id"], name: "index_contacts_on_contact_type_id", using: :btree
 
   create_table "couriers", force: true do |t|
     t.integer  "client_id"
@@ -60,8 +63,8 @@ ActiveRecord::Schema.define(version: 20140503182027) do
     t.datetime "updated_at"
   end
 
-  add_index "couriers", ["address_id"], name: "index_couriers_on_address_id"
-  add_index "couriers", ["client_id"], name: "index_couriers_on_client_id"
+  add_index "couriers", ["address_id"], name: "index_couriers_on_address_id", using: :btree
+  add_index "couriers", ["client_id"], name: "index_couriers_on_client_id", using: :btree
 
   create_table "order_statuses", force: true do |t|
     t.integer  "order_id"
@@ -72,8 +75,8 @@ ActiveRecord::Schema.define(version: 20140503182027) do
     t.datetime "updated_at"
   end
 
-  add_index "order_statuses", ["courier_id"], name: "index_order_statuses_on_courier_id"
-  add_index "order_statuses", ["order_id"], name: "index_order_statuses_on_order_id"
+  add_index "order_statuses", ["courier_id"], name: "index_order_statuses_on_courier_id", using: :btree
+  add_index "order_statuses", ["order_id"], name: "index_order_statuses_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "number"
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(version: 20140503182027) do
     t.datetime "updated_at"
   end
 
-  add_index "orders", ["receiver_id"], name: "index_orders_on_receiver_id"
-  add_index "orders", ["sender_id"], name: "index_orders_on_sender_id"
+  add_index "orders", ["receiver_id"], name: "index_orders_on_receiver_id", using: :btree
+  add_index "orders", ["sender_id"], name: "index_orders_on_sender_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140503182027) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
