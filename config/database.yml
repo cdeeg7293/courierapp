@@ -16,15 +16,15 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
-#development:
-#  adapter: postgresql
-#  encoding: unicode
-#  database: courierapp
-#  pool: 5
-#  username: courierapp_admin
-#  password: ca_12345
-#  host: localhost
-#  port: 5432
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: courierapp
+  pool: 5
+  username: courierapp_admin
+  password: ca_12345
+  host: localhost
+  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
