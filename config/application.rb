@@ -24,3 +24,4 @@ module Clientcontacttest
     config.i18n.available_locales = [:en, :ru]
   end
 end
+
