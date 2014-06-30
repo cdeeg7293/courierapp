@@ -20,3 +20,14 @@ courier:
   patronymic: Семенович
   address: valid_address
   is_person: true
+
+sender_1:
+  last_name: Smith
+  first_name: John
+  address: valid_address
+  is_person: true
+
+receiver_1:
+  last_name: ООО 1-2-3
+  address: valid_address
+  is_person: false
