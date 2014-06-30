@@ -2,7 +2,7 @@ require 'test_helper'
 
 class OrderStatusesControllerTest < ActionController::TestCase
   setup do
-    @order_status = order_statuses(:one)
+    @order_status = order_statuses(:order_status_1)
   end
 
   test "should get index" do

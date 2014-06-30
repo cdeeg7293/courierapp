@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ContactTypesControllerTest < ActionController::TestCase
   setup do
-    @contact_type = contact_types(:one)
+    @contact_type = contact_types(:valid_contact_type)
   end
 
   test "should get index" do

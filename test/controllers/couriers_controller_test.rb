@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CouriersControllerTest < ActionController::TestCase
   setup do
-    @courier = couriers(:one)
+    @courier = couriers(:valid_courier)
   end
 
   test "should get index" do

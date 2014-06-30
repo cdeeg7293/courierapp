@@ -3,5 +3,5 @@
 valid_contact:
   contact_type: valid_contact_type
   value: "+380123456987"
-  client: valid_client
+  client: client_with_valid_address
 

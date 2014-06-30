@@ -26,7 +26,7 @@ class Client < ActiveRecord::Base
   scope :by_address_str, -> addr { includes(:address).where("addresses.city LIKE ? OR addresses.street LIKE ?", addr, addr) }
 
   def full_name
-    last_name + ' ' + first_name + ' ' + patronymic
+    last_name + ' ' + (first_name.nil? ? '' : first_name) + ' ' + (patronymic.nil? ? '' : patronymic)
   end
 
 
@@ -36,6 +36,6 @@ class Client < ActiveRecord::Base
   end
 
   def destroy_address
-    self.destroy_address if self.address
+    self.address.destroy if self.address
   end
 end
