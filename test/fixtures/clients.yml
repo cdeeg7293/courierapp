@@ -11,9 +11,9 @@ client_with_invalid_address:
   last_name: Неправильный
   first_name: Федор
   patronymic: Петрович
-  address: invalid_address
+  address: no_such_address
   is_person: true
-  
+
 courier:
   last_name: Курьеров
   first_name: Игорь
