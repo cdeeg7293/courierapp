@@ -1,13 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  order_id: 
-  courier_id: 
+order_status_1:
+  order: order_1 
+  courier: valid_courier
   date_planned: 2014-05-03 21:20:27
-  comment: MyText
 
-two:
-  order_id: 
-  courier_id: 
-  date_planned: 2014-05-03 21:20:27
-  comment: MyText
