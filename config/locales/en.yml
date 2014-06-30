@@ -24,3 +24,5 @@ en:
   sign_in: "Login"
   sign_out: "Logout"
   register: "Register"
+  filter: "Filter"
+  clear: "Clear"

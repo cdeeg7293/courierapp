@@ -1,4 +1,6 @@
 ru:
   sign_in: "Вход"
   sign_out: "Выход"
+  filter: "Фильтр"
+  clear: "Очистить"
 

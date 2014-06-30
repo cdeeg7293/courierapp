@@ -1,5 +1,6 @@
 <% table_locals ||= nil %>
 <% sidebar_locals ||= nil %>
+<% sidebar_title ||= 'Sidebar' %>
 
 <div class="row-fluid">
   <div class="span9" id="content">
@@ -23,7 +24,7 @@
     <div class="row-fluid">
       <div class="block">
         <div class="navbar navbar-inner block-header">
-          <div class="muted pull-left"><h3>Filter</h3></div>
+          <div class="muted pull-left"><h3><%= sidebar_title %></h3></div>
         </div>
         <div class="block-content collapse in">
 	  <%= render partial: "#{controller.controller_name}/#{controller.controller_name}_sidebar", locals: sidebar_locals %>
