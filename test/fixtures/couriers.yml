@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  client_id: 
-  address_id: 
+valid_courier:
+  client: courier
+  address: valid_address
 
-two:
-  client_id: 
-  address_id: 

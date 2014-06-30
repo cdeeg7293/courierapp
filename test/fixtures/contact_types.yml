@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  type_name: MyString
+valid_contact_type:
+  type_name: Телефон
 
-two:
-  type_name: MyString

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  city: MyString
-  street: MyString
-  building: MyString
-  apartment: 1
+invalid_address:
+  city: "btserejla"
+  street: "qazxswedc"
+  building: "112"
+  apartment: 9
 
-two:
-  city: MyString
-  street: MyString
-  building: MyString
-  apartment: 1
+valid_address:
+  city: "Донецк"
+  street: "Петровского"
+  building: "123Б"
+  apartment: 10

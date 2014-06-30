@@ -1,7 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
+client_with_valid_address:
+  last_name: Правильный
+  first_name: Иван
+  patronymic: Петрович
+  address: valid_address
+  is_person: true
 
-two:
-  name: MyString
+client_with_invalid_address:
+  last_name: Неправильный
+  first_name: Федор
+  patronymic: Петрович
+  address: invalid_address
+  is_person: true
+  
+courier:
+  last_name: Курьеров
+  first_name: Игорь
+  patronymic: Семенович
+  address: valid_address
+  is_person: true
