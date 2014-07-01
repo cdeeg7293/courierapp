@@ -9,7 +9,8 @@ class ClientTest < ActiveSupport::TestCase
   end
   
   test "client should have valid address" do
-    client = clients(:client_with_invalid_address)
+    client = clients(:client_with_valid_address)
+    client.address = nil
     assert_not client.save
   end
   
