@@ -32,6 +32,6 @@ private
   end
   
   def destroy_address_living
-    self.destroy_address if self.address
+    self.destroy_address if (self.address && (self.client.address != self.address))
   end
 end
