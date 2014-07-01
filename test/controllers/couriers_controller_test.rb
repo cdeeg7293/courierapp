@@ -19,15 +19,18 @@ class CouriersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-#   test "should create courier" do
-#     sign_in @user
-#     assert_difference('Courier.count') do
-#       # TODO:write a proper creation model (client_attributes: {...}, address_attributes: {...})
-#       post :create, courier: { address_id: @courier.address.id, client_id: @courier.client.id }
-#     end
-# 
-#     assert_redirected_to courier_path(assigns(:courier))
-#   end
+  test "should create courier" do
+    sign_in @user
+    
+    contact = contacts(:valid_contact)
+    
+    assert_difference('Courier.count') do
+      post :create, courier: { client_attributes: { first_name: @courier.client.first_name, last_name: @courier.client.last_name, patronymic: @courier.client.patronymic, is_person: @courier.client.is_person, address_attributes: { city: @courier.client.address.city, street: @courier.client.address.street, building: @courier.client.address.building, apartment: @courier.client.address.apartment }, contacts_attributes: [ contact_type_id: contact.contact_type.id, value: contact.value ] },
+	address_attributes: { city: @courier.address.city, street: @courier.address.street, building: @courier.address.building, apartment: @courier.address.apartment }                                                                                                                                                                                                                                                      }
+    end
+
+    assert_redirected_to courier_path(assigns(:courier))
+  end
 
   test "should show courier" do
     sign_in @user
