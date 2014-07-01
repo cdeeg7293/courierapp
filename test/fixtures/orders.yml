@@ -7,10 +7,3 @@ order_1:
   delivered_date: 2014-03-02 17:29:15
   issued_date: 2014-03-02 16:29:15
 
-two:
-  number: 2
-  sender_id: 
-  receiver_id: 
-  sum: 9.99
-  delivered_date: 2014-03-02 16:29:15
-  issued_date: 2014-03-02 16:29:15

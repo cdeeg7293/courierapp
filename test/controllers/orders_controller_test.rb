@@ -7,7 +7,6 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    #TODO: fullname is nil and the test crashes. Investigate why.
     sign_in @user
     get :index
     assert_response :success
