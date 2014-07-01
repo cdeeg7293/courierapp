@@ -18,6 +18,8 @@
 <h5> <b><%= t('activerecord.attributes.client.address') %></b> </h5>
 <%= render "shared/show_address", address: @client.address %>
 
+<%= render 'show_contacts', contacts: @client.contacts %>
+
 <%= render "map_client", client: @client.address %>
 
 <div class="form-actions">

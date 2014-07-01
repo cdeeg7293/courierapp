@@ -1,0 +1,17 @@
+<table class = "table table-bordered">
+  <thead>
+    <tr>
+      <th><%= Contact.human_attribute_name(:contact_type) %></th>
+      <th><%= Contact.human_attribute_name(:value) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% contacts.each do |c| %>
+      <tr>
+        <td><%= c.contact_type.type_name %></td>
+        <td><%= c.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
