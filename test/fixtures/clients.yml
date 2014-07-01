@@ -7,7 +7,7 @@ client_with_valid_address:
   address: valid_address
   is_person: true
 
-client_with_invalid_address:
+client_2:
   last_name: Неправильный
   first_name: Федор
   patronymic: Петрович

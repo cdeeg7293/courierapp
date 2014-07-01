@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 order_1:
-  number: 1
   sender: sender_1
   receiver: receiver_1
   sum: 9.99
