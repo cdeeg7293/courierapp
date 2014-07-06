@@ -26,6 +26,6 @@ class ClientTest < ActiveSupport::TestCase
   
   test "full_name function" do 
     client = Client.new(last_name: "Петров", first_name: "Иван", patronymic: "Петрович")
-    assert client.full_name, "Петров Иван Петрович"
+    assert_equal "Петров Иван Петрович", client.full_name
   end
 end

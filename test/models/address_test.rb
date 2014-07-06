@@ -15,12 +15,12 @@ class AddressTest < ActiveSupport::TestCase
   
   test "full_address function" do
     test_address = Address.new( city: "city", street: "street", building: "building", apartment: 1)
-    assert_equal test_address.full_address, "city street building 1"
+    assert_equal "city street building 1", test_address.full_address
   end
   
   test "full_address_ru function" do
     test_address_rus = Address.new( city: "Донецк", street: "Постышева", building: "1А", apartment: 15)
-    assert_equal test_address_rus.full_address_rus, "г. Донецк ул. Постышева д. 1А кв. 15"
+    assert_equal "г. Донецк ул. Постышева д. 1А кв. 15", test_address_rus.full_address_rus
   end
 
 end
