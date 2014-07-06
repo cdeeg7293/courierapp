@@ -26,6 +26,8 @@ en:
   register: "Register"
   filter: "Filter"
   clear: "Clear"
+  add-contact: "Add contact"
+  remove-contact: "Remove contact"
   clients:
     show:
       title: "Client details"

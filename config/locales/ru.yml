@@ -3,6 +3,8 @@ ru:
   sign_out: "Выход"
   filter: "Фильтр"
   clear: "Очистить"
+  add-contact: "Добавить контакт"
+  remove-contact: "Удалить контакт"
   clients:
     show:
       title: "Детали о клиенте"

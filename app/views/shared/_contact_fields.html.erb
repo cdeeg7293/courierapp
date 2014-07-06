@@ -2,6 +2,6 @@
 <div class="nested-fields">
     <%= f.input :contact_type_id, collection: ContactType.all, :label_method => :type_name, :include_blank => false %>
     <%= f.input :value %>
-  <%= link_to_remove_association "remove contact", f , :class => 'btn'%>
+  <%= link_to_remove_association t('remove-contact'), f , :class => 'btn'%>
 </div>
 </div>
