@@ -1,30 +1,39 @@
-<%= form_tag clients_path, method: 'get', class:'form-horizontal' do %>
-  <%= field_set_tag do %>
-  <div class='form-group'>
+<%= form_tag clients_path, method: 'get', class:'form-inline' do %>
+  <div class='control-group'>
     <%= label_tag :is_person, nil, class: 'checkbox-inline' do %>
       <%= check_box_tag :is_person, 1, !params[:is_person].nil? %>
       <%= t('activerecord.attributes.client.is_person') %>
     <% end %>
   </div>
-  <div class='form-group'>
+  
+  <div class="control-group">
     <%= label_tag :last_name, t('activerecord.attributes.client.last_name') %>
-    <%= text_field_tag :last_name, params[:last_name], class: 'input-medium' %>
+    <div class="controls">
+      <%= text_field_tag :last_name, params[:last_name] %>
+    </div>
   </div>
-  <div class='form-group'>
+  
+  <div class="control-group">
     <%= label_tag :first_name, t('activerecord.attributes.client.first_name') %>
-    <%= text_field_tag :first_name, params[:first_name], class: 'input-medium' %>
+    <div class="controls">
+      <%= text_field_tag :first_name, params[:first_name] %>
+    </div>
   </div>
-  <div class='form-group'>
+  
+  <div class="control-group">
     <%= label_tag :patronymic, t('activerecord.attributes.client.patronymic') %>
-    <%= text_field_tag :patronymic, params[:patronymic], class: 'input-medium' %>
+    <div class="controls">
+      <%= text_field_tag :patronymic, params[:patronymic] %>
+    </div>
   </div>
-  <div class='form-group'>
+  
+  <div class="control-group">
     <%= label_tag :patronymic, t('activerecord.attributes.client.address') %>
-    <%= text_field_tag :address_str, params[:address_str], class: 'input-medium' %>
+    <div class="controls">
+      <%= text_field_tag :address_str, params[:address_str] %>
+    </div>
   </div>
-  <div class='form-group'>
-    <%= submit_tag t('filter'), class: 'btn btn-normal' %>
-    <%= link_to t('clear'), clients_path, class: 'btn btn-normal' %>
-  </div>
-  <% end %>
+  
+  <%= submit_tag t('filter'), class: 'btn btn-normal' %>
+  <%= link_to t('clear'), orders_path, class: 'btn btn-normal' %>
 <% end %>
