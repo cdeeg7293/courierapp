@@ -29,3 +29,7 @@ en:
   clients:
     show:
       title: "Client details"
+    new:
+      title: "New client"
+    edit:
+      title: "Edit client"

@@ -6,4 +6,8 @@ ru:
   clients:
     show:
       title: "Детали о клиенте"
+    new:
+      title: "Добавление клиента"
+    edit:
+      title: "Изменение клиента"
 
