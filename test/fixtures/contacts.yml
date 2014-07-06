@@ -4,4 +4,14 @@ valid_contact:
   contact_type: valid_contact_type
   value: "+380123456987"
   client: client_with_valid_address
+  
+sender_1_contact:
+  contact_type: valid_contact_type
+  value: "+389993456987"
+  client: sender_1
+  
+receiver_1_contact:
+  contact_type: valid_contact_type
+  value: "+389993456988"
+  client: receiver_1
 

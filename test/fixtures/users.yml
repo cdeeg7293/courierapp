@@ -6,6 +6,9 @@
 #
 test_user: {}
 # column: value
+admin:
+  email: 'a@b.c'
+  encrypted_password: <%= User.new.send(:password_digest, 'pwd') %>
 #
 #two: {}
 #  column: value

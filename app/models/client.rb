@@ -15,7 +15,7 @@ class Client < ActiveRecord::Base
   has_many :received_orders, :class_name => Order, :foreign_key => :receiver_id
   
   validates :last_name, presence: true
-  validates :first_name, :patronymic, presence: true, if: Proc.new { |client| client.is_person }
+  validates :first_name, :patronymic, presence: false, if: Proc.new { |client| !client.is_person }
   
   validates :address, presence: true
   

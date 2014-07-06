@@ -64,8 +64,12 @@ class OrdersController < ApplicationController
   end
   
   def select_sender_or_receiver
+    if srr_params[:srflag].nil? || request.referer.nil?
+      raise ActionController::RoutingError.new('Not Found')
+    end
     set_session_value(:return_url, URI(request.referer).path) #need to make this more modern!
-    set_session_value(:srflag, params[:srflag])
+    #Rails::logger.debug params[:srflag].inspect
+    set_session_value(:srflag, srr_params[:srflag].to_sym)
     redirect_to clients_url
   end
 
@@ -82,6 +86,10 @@ class OrdersController < ApplicationController
     
     def index_params
       params.permit(:number, :issue_date_start, :issue_date_end, :delivery_date_start, :delivery_date_end, :sender_id, :receiver_id)
+    end
+    
+    def srr_params
+      params.permit(:srflag)
     end
     
     def load_sender_and_receiver

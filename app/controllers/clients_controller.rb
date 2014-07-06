@@ -20,9 +20,9 @@ class ClientsController < ApplicationController
   def select
     redirect_url = get_session_value(:return_url).to_s
     #sr = get_session_value(:sr)
-    client_id = params[:id]
+    client_id = params[:id].to_i
     if Client.exists?(client_id)
-      if get_session_value(:srflag).to_sym == :sender
+      if get_session_value(:srflag) == :sender
         set_session_value(:sender, client_id)
       else
 	set_session_value(:receiver, client_id)
