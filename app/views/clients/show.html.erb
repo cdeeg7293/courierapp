@@ -3,24 +3,35 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+<div class="row-fluid">
+<div class="span4">
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:last_name) %>:</strong></dt>
+  <dt><strong><%= @client.is_person ? model_class.human_attribute_name(:last_name) : model_class.human_attribute_name(:name_not_person) %>:</strong></dt>
   <dd><%= @client.last_name %></dd>
 </dl>
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
-  <dd><%= @client.first_name %></dd>
-</dl>
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:patronymic) %>:</strong></dt>
-  <dd><%= @client.patronymic %></dd>
-</dl>
+<% if @client.is_person %>
+  <dl class="dl-horizontal">
+    <dt><strong><%= model_class.human_attribute_name(:first_name) %>:</strong></dt>
+    <dd><%= @client.first_name %></dd>
+  </dl>
+  <dl class="dl-horizontal">
+    <dt><strong><%= model_class.human_attribute_name(:patronymic) %>:</strong></dt>
+    <dd><%= @client.patronymic %></dd>
+  </dl>
+<% end %>
 <h5> <b><%= t('activerecord.attributes.client.address') %></b> </h5>
 <%= render "shared/show_address", address: @client.address %>
 
 <%= render 'show_contacts', contacts: @client.contacts %>
 
+</div>
+
+<div class="span8">
+
 <%= render "map_client", client: @client.address %>
+
+</div>
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

@@ -49,6 +49,7 @@ ru:
         patronymic: "Отчество"
         address: "Адрес"
         contacts: "Контактные данные"
+        name_not_person: "Название"
       contact_type:
         type_name: "Название типа"
         created_at: "Дата создания"

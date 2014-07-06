@@ -3,4 +3,7 @@ ru:
   sign_out: "Выход"
   filter: "Фильтр"
   clear: "Очистить"
+  clients:
+    show:
+      title: "Детали о клиенте"
 

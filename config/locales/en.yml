@@ -26,3 +26,6 @@ en:
   register: "Register"
   filter: "Filter"
   clear: "Clear"
+  clients:
+    show:
+      title: "Client details"

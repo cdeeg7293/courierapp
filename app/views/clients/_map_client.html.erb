@@ -1,33 +1,32 @@
-<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
 <%= content_tag :div, class: "address_data", data: {address: client} do %>
 <% end %>
 
-<div id="map" style="width: inherit; height: 400px"></div>
+<div id="map" style="width: 100%; height: 400px"></div>
 
 <script type="text/javascript">
     ymaps.ready(init);
     var myMap;
 
-    function init(){     
+    function init(){
+	    
+	    var lat = $('.address_data').data('address').latitude;
+	    var lng = $('.address_data').data('address').longitude;
 
             myMap = new ymaps.Map('map', {
-                center: [<%=client.latitude%>, <%=client.longitude%>],
+                center: [lat, lng],
                 zoom : 12
             });
 
-            myMap.controls.add('mapTools');
-            myMap.controls.add('zoomControl');
-            myMap.controls.add('scaleLine');
             
             clientGeoObject = new ymaps.GeoObject({
               geometry: {
                 type: "Point",// тип геометрии - точка
-                coordinates: [<%=client.latitude%>, <%=client.longitude%>] // координаты точки
+                coordinates: [lat, lng] // координаты точки
               }
             });
             myMap.geoObjects.add(clientGeoObject);
-        
- 
+
     }
 </script> 
