@@ -13,20 +13,20 @@
 	    
 	    var lat = $('.address_data').data('address').latitude;
 	    var lng = $('.address_data').data('address').longitude;
+	    var address = 'ул. ' + $('.address_data').data('address').street + ' д. ' + $('.address_data').data('address').building + ' кв. ' + $('.address_data').data('address').apartment;
 
             myMap = new ymaps.Map('map', {
                 center: [lat, lng],
                 zoom : 12
             });
 
-            
-            clientGeoObject = new ymaps.GeoObject({
-              geometry: {
-                type: "Point",// тип геометрии - точка
-                coordinates: [lat, lng] // координаты точки
-              }
-            });
+            var clientGeoObject = new ymaps.Placemark([lat, lng], {balloonContent: address});
+//             clientGeoObject = new ymaps.GeoObject({
+//               geometry: {
+//                 type: "Point",// тип геометрии - точка
+//                 coordinates: [lat, lng] // координаты точки
+//               }
+//             });
             myMap.geoObjects.add(clientGeoObject);
-
     }
 </script> 
