@@ -12,6 +12,12 @@ ru:
       title: "Добавление клиента"
     edit:
       title: "Изменение клиента"
+  orders:
+    sidebar:
+      issue_date_start: "Дата оформления: с"
+      issue_date_end: "Дата оформления: по"
+      delivery_date_start: "Дата доставки: с"
+      delivery_date_end: "Дата доставки: по"
   devise:
      sessions:
        new:

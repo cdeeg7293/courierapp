@@ -1,27 +1,27 @@
 <%= form_tag orders_path, method: 'get', :class => 'form-inline' do %>  
   <div class="control-group">
-    <%= label_tag 'Issue date start', nil, class: 'control-label' %>
+    <%= label_tag t 'orders.sidebar.issue_date_start' %>
     <div class="controls">
       <%= text_field_tag :issue_date_start, params[:issue_date_start] %>
     </div>
   </div>
   
   <div class="control-group">
-    <%= label_tag 'Issue date end' %>
+    <%= label_tag t 'orders.sidebar.issue_date_end' %>
     <div class="controls">
       <%= text_field_tag :issue_date_end, params[:issue_date_end] %>
     </div>
   </div>
   
   <div class="control-group">
-    <%= label_tag 'Delivery date start' %>
+    <%= label_tag t 'orders.sidebar.delivery_date_start' %>
     <div class="controls">
       <%= text_field_tag :delivery_date_start, params[:delivery_date_start] %>
     </div>
   </div>
   
   <div class="control-group">
-    <%= label_tag 'Delivery date end' %>
+    <%= label_tag t 'orders.sidebar.delivery_date_end' %>
     <div class="controls">
       <%= text_field_tag :delivery_date_end, params[:delivery_date_end] %>
     </div>

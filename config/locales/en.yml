@@ -34,6 +34,12 @@ en:
       title: "New client"
     edit:
       title: "Edit client"
+  orders:
+    sidebar:
+      issue_date_start: "Issued date start"
+      issue_date_end: "Issued date end"
+      delivery_date_start: "Delivered date start"
+      delivery_date_end: "Delivered date end"
   devise:
      sessions:
        new:
