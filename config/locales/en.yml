@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   sign_in: "Login"
   sign_out: "Logout"
   register: "Register"
@@ -35,3 +34,7 @@ en:
       title: "New client"
     edit:
       title: "Edit client"
+  devise:
+     sessions:
+       new:
+         sign_in_message: "Please sign in"

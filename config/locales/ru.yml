@@ -12,4 +12,8 @@ ru:
       title: "Добавление клиента"
     edit:
       title: "Изменение клиента"
+  devise:
+     sessions:
+       new:
+         sign_in_message: "Вход в систему"
 

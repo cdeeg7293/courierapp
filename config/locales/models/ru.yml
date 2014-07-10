@@ -70,3 +70,7 @@ ru:
         order: "Заказ"
         date_planned: "Планируемая дата"
         comment: "Комментарий"
+      user:
+        email: "E-mail"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
